@@ -16,7 +16,7 @@
 ---
 
 ## GitHub Repository
-🔗 **Public Repo:** `https://github.com/YOUR_ORG/devguardian-ai`
+🔗 **Public Repo:** `https://github.com/sandyArt/DevGuardian-AI`
 
 ---
 
