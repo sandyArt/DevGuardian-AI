@@ -200,26 +200,6 @@ max_tokens: 1500
 prompt: |
   You are a security engineer. Review the provided C# fix for vulnerabilities.
   ...
-```
-
----
-
-## Hackathon Demo Flow (2 minutes)
-
-See [DEMO_SCRIPT.md](DEMO_SCRIPT.md) for the step-by-step presenter guide.
-
----
-
-## Scoring Criteria Alignment
-
-| Judge criterion | DevGuardian implementation |
-|-----------------|---------------------------|
-| Agentic AI | 4-stage autonomous pipeline with no human in the loop |
-| Spec-driven / MCP | YAML specs + `/mcp/tools` endpoints |
-| A2A interoperability | Any MCP client can call DevGuardian agents |
-| Extensibility | New agent = new YAML file only |
-| Azure OpenAI | Semantic Kernel + Azure OpenAI gpt-4o |
-| Real-world value | Incident → root cause → fix → PR in < 30 s |
 
 ---
 
