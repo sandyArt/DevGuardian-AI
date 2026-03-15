@@ -1,0 +1,8 @@
+name: FixtureAgent
+description: A minimal agent used only in unit tests
+inputs:
+  - input
+max_tokens: 256
+prompt: |
+  You are a test agent. Echo the input.
+  Input: {{input}}

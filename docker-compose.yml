@@ -1,0 +1,40 @@
+version: '3.9'
+
+services:
+  devguardian-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: devguardian-ai:latest
+    container_name: devguardian-api
+    ports:
+      - "8080:8080"
+    environment:
+      # ── Replace these values or use a .env file ──────────────────────────
+      - AzureOpenAI__Endpoint=${AZURE_OPENAI_ENDPOINT}
+      - AzureOpenAI__Key=${AZURE_OPENAI_KEY}
+      - AzureOpenAI__Deployment=${AZURE_OPENAI_DEPLOYMENT:-gpt-4o}
+      - GitHub__Token=${GITHUB_TOKEN}
+      - GitHub__Owner=${GITHUB_OWNER:-your-org}
+      - GitHub__Repo=${GITHUB_REPO:-your-repo}
+      - DevGuardian__SpecsPath=/app/specs
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      # Mount custom specs at runtime without rebuilding the image
+      - ./specs:/app/specs:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/agents/catalogue"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  # Optional: Local AI for offline demos using Ollama
+  # ollama:
+  #   image: ollama/ollama:latest
+  #   ports: ["11434:11434"]
+  #   volumes: ["ollama-data:/root/.ollama"]
+
+# volumes:
+#   ollama-data:

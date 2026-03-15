@@ -1,0 +1,28 @@
+## .NET / C#
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.swp
+*.orig
+
+## Sensitive config — never commit real keys
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/*.secrets.json
+.env
+.env.local
+.env.*.local
+# .env.example is intentionally committed as a setup template
+
+## Build artefacts
+publish/
+artifacts/
+TestResults/
+
+## Rider / JetBrains
+.idea/
+
+## macOS
+.DS_Store
